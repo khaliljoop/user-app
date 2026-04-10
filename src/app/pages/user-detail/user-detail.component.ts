@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/user.model';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { CommonModule } from '@angular/common';
 
@@ -14,7 +14,8 @@ export class UserDetailComponent implements OnInit{
 
   constructor(
     private route:ActivatedRoute,
-    private userService:UserService
+    private userService:UserService,
+    private router: Router
   ){}
 
   user:User={
@@ -33,6 +34,10 @@ ngOnInit() {
       this.user = data;
     },
   });
+}
+
+goBack() {
+  this.router.navigate(['/']);
 }
 
 }

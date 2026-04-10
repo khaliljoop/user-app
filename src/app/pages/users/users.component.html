@@ -1,15 +1,14 @@
-<h2>Utilisateurs</h2>
+<h2 class="title"> Utilisateurs</h2>
 
 <div class="search">
-  <input [(ngModel)]="search" placeholder="Rechercher..." class="form-control mb-3">
-  <button
-          class="btn btn-primary btn-sm"
-          [routerLink]="['/formulaire']">
-          Ajouter
-        </button>
+  <input [(ngModel)]="search" placeholder="Rechercher un utilisateur..." />
+
+  <!-- <button class="btn-add" [routerLink]="['/formulaire']">
+    + Ajouter
+  </button> -->
 </div>
 
-<table class="table table-bordered table-striped">
+<table class="user-table">
   <thead>
     <tr>
       <th>Avatar</th>
@@ -25,7 +24,8 @@
       <td>
         <img
           [src]="'https://picsum.photos/seed/' + user.id + '/60'"
-          style="border-radius: 50%;">
+          class="avatar"
+        />
       </td>
 
       <td>{{ user.name }}</td>
@@ -33,17 +33,19 @@
 
       <td>
         <button
-        class="btn btn-primary btn-sm"
-        (click)="goToDetail(user.id)">
-        Voir
-      </button>
-        <!-- <button
-          class="btn btn-primary btn-sm"
-          [routerLink]="['/user', user.id]">
+          class="btn-view"
+          (click)="goToDetail(user.id)">
           Voir
-        </button> -->
+        </button>
       </td>
 
     </tr>
+
+    <tr *ngIf="filteredUsers.length === 0">
+      <td colspan="4" class="no-data">
+        Aucun utilisateur trouvé
+      </td>
+    </tr>
+
   </tbody>
 </table>

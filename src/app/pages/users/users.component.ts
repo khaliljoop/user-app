@@ -3,7 +3,6 @@ import { User } from '../../models/user.model';
 import { UserService } from '../../services/user.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { routes } from '../../app.routes';
 import { Router, RouterModule } from '@angular/router';
 
 @Component({

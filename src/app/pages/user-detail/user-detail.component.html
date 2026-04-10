@@ -1,38 +1,51 @@
-<div class="container mt-4" *ngIf="user; else loading">
-  <div class="card shadow">
-    <div class="card-header bg-primary text-white">
-      <h4 class="mb-0">{{ user.name }}</h4>
+<div class="user-container" *ngIf="user; else loading">
+
+  <div class="user-card">
+
+    <!-- Header -->
+    <div class="user-header">
+      <img
+        [src]="'https://picsum.photos/seed/' + user.id + '/120'"
+        class="avatar-large" />
+
+      <div>
+        <h2>{{ user.name }}</h2>
+        <p class="email">{{ user.email }}</p>
+      </div>
     </div>
 
-    <div class="card-body">
-      <p><strong>Email :</strong> {{ user.email }}</p>
-      <p><strong>Téléphone :</strong> {{ user.phone }}</p>
-      <p><strong>Site :</strong> {{ user.website }}</p>
+    <!-- Infos -->
+    <div class="user-body">
+      <div class="info">
+        <span>📧 Email</span>
+        <p>{{ user.email }}</p>
+      </div>
 
-      <hr />
+      <div class="info">
+        <span>📞 Téléphone</span>
+        <p>{{ user.phone }}</p>
+      </div>
 
-      <!-- <h5>Adresse</h5>
-      <p>
-        {{ user.address.street }},
-        {{ user.address.suite }},
-        {{ user.address.city }}
-      </p>
-
-      <h5>Entreprise</h5>
-      <p>{{ user.company.name }}</p> -->
+      <div class="info">
+        <span>🌐 Site web</span>
+        <p>{{ user.website }}</p>
+      </div>
     </div>
 
-    <div class="card-footer text-end">
-      <button routerLink="/" class="btn btn-outline-primary">
+    <!-- Footer -->
+    <div class="user-footer">
+      <button (click)="goBack()" class="btn-back">
         ← Retour
       </button>
     </div>
+
   </div>
+
 </div>
 
 <ng-template #loading>
-  <div class="text-center mt-5">
-    <div class="spinner-border text-primary"></div>
-    <p class="mt-2">Chargement...</p>
+  <div class="loading">
+    <div class="spinner"></div>
+    <p>Chargement...</p>
   </div>
 </ng-template>
