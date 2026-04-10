@@ -1,0 +1,49 @@
+<h2>Utilisateurs</h2>
+
+<div class="search">
+  <input [(ngModel)]="search" placeholder="Rechercher..." class="form-control mb-3">
+  <button
+          class="btn btn-primary btn-sm"
+          [routerLink]="['/formulaire']">
+          Ajouter
+        </button>
+</div>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Avatar</th>
+      <th>Nom</th>
+      <th>Email</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let user of filteredUsers">
+
+      <td>
+        <img
+          [src]="'https://picsum.photos/seed/' + user.id + '/60'"
+          style="border-radius: 50%;">
+      </td>
+
+      <td>{{ user.name }}</td>
+      <td>{{ user.email }}</td>
+
+      <td>
+        <button
+        class="btn btn-primary btn-sm"
+        (click)="goToDetail(user.id)">
+        Voir
+      </button>
+        <!-- <button
+          class="btn btn-primary btn-sm"
+          [routerLink]="['/user', user.id]">
+          Voir
+        </button> -->
+      </td>
+
+    </tr>
+  </tbody>
+</table>

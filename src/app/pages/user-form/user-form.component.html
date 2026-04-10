@@ -1,0 +1,30 @@
+<form #form="ngForm" (ngSubmit)="submit(form)">
+  <input name="name" ngModel required placeholder="Nom">
+  <input name="email" ngModel required email placeholder="Email">
+
+  <button>Envoyer</button>
+</form>
+
+<hr>
+
+<h3>Liste des utilisateurs ajoutés</h3>
+
+<div *ngIf="users.length === 0" class="alert alert-info mt-3">
+  Aucun utilisateur disponible
+</div>
+
+<table class="table table-striped mt-3">
+  <thead>
+    <tr>
+      <th>Nom</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{ user.name }}</td>
+      <td>{{ user.email }}</td>
+    </tr>
+  </tbody>
+</table>

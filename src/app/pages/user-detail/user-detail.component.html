@@ -1,0 +1,38 @@
+<div class="container mt-4" *ngIf="user; else loading">
+  <div class="card shadow">
+    <div class="card-header bg-primary text-white">
+      <h4 class="mb-0">{{ user.name }}</h4>
+    </div>
+
+    <div class="card-body">
+      <p><strong>Email :</strong> {{ user.email }}</p>
+      <p><strong>Téléphone :</strong> {{ user.phone }}</p>
+      <p><strong>Site :</strong> {{ user.website }}</p>
+
+      <hr />
+
+      <!-- <h5>Adresse</h5>
+      <p>
+        {{ user.address.street }},
+        {{ user.address.suite }},
+        {{ user.address.city }}
+      </p>
+
+      <h5>Entreprise</h5>
+      <p>{{ user.company.name }}</p> -->
+    </div>
+
+    <div class="card-footer text-end">
+      <button routerLink="/" class="btn btn-outline-primary">
+        ← Retour
+      </button>
+    </div>
+  </div>
+</div>
+
+<ng-template #loading>
+  <div class="text-center mt-5">
+    <div class="spinner-border text-primary"></div>
+    <p class="mt-2">Chargement...</p>
+  </div>
+</ng-template>
